@@ -1,0 +1,74 @@
+<div id="top_nav" style="padding-top: 5%; background:blue;padding-bottom: 2%; ">
+  <ul>
+    <li class="mainMenu-itemLevel1">
+      <a href="" class="active">HOME</a>
+    </li>
+    <li class="mainMenu-itemLevel1">
+      <a href="">ABOUT US</a>
+    </li>
+    <li class="mainMenu-itemLevel1">
+      <a href="">JOBS</a>
+    </li>
+    <li class="mainMenu-itemLevel1">
+      <a href="">CLIENTS</a>
+    </li>
+    <li class="mainMenu-itemLevel1">
+      <a href="">EMPLOYERS</a>
+    </li>
+    <li class="mainMenu-itemLevel1">
+      <a href="">CONTACT US</a>
+    </li>
+  </ul>
+</div>
+
+
+<div class="container">
+<div class="col-sm-3 col-md-3" *ngFor="let x of userData">
+    <h3 >Profile</h3>
+  <img [src]="transform()" style="width: 200px;height: 200px;">
+  <div style="margin-top: 2%;">
+    <button  style="text-align: center"  class="btn btn-primary" (click)="openDialog()">
+      Edit Profile
+    </button>
+  </div>
+
+</div>
+<div class="col-sm-3 col-md-6">
+<h3 *ngFor="let user of userData">
+  I'm {{user.firstname}}  {{user.lastname}} and Im above {{user.age}} years and
+  you can send emails to {{user.email}}.
+  i live in the state of {{user.state}}. i like to play
+  <span  *ngFor="let hobbies of userData[0].hobbies">
+     {{hobbies}}
+  </span>
+  <span *ngIf="user.box==false ;else: logging">. you are not subcribed our new letter</span>
+
+
+  <span>
+
+    <ng-template #logging>
+      . please send me new letter
+    </ng-template>
+
+  </span>
+  <span *ngIf="user.box==!true"> you are not subcribed our new letter</span>. please
+  reach out to me on my phone
+  {{user.mobile}}.
+</h3>
+
+
+</div>
+</div>
+<div class="footer2" style="margin-top: 10%;">
+  <div class="text-center">Subscribe to Our Job Seeker Mailing List</div>
+  <div class="text-center" style="margin-top: 2%;">
+    <span style="text-align: center;">
+      <input type="text" class="form-control1" placeholder="Enter your Email Address " />
+      <i class="fa fa-envelope-o" style="color: blue;"></i>
+    </span>
+  </div>
+</div>
+
+
+
+

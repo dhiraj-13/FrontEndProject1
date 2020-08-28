@@ -1,0 +1,302 @@
+<h2 mat-dialog-title >Register</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="userForm" (ngSubmit)="postData(userForm)">
+    <div class="modal-body">
+      <div class="col-sm-3 col-md-3">
+        <br />
+        <input
+          type="file"
+          #filePicker
+          (change)="onImagePicked($event)"
+          accept="image/*"
+          value="{{this.imagePreview}}"
+        />
+
+        <div>
+          <div
+            style="width: 100px; height: 100px"
+            class="image-preview"
+            *ngIf="
+      imagePreview !== '' &&
+      imagePreview &&
+      userForm.get('image').valid
+    "
+          >
+            <img [src]="imagePreview" [alt]="userForm.value.title" />
+          </div>
+
+          <button type="button" (click)="filePicker.click()">
+            Upload Photo
+          </button>
+          <input
+            type="file"
+            #filePicker
+            (change)="onImagePicked($event)"
+            accept="image/*"
+            value="{{ this.imagePreview }}"
+          />
+        </div>
+      </div>
+      <div class="col-md-9">
+        <br />
+        <div>
+          <div class="row">
+            <div class="col-xs-6 col-md-6">
+              <input
+                type="text"
+                class="form-control col-xl-3"
+                placeholder="First Name"
+                formControlName="firstname"
+              />
+              <span
+                class="error"
+                *ngIf="
+              userForm.controls['firstname'].touched &&
+              !userForm.controls['firstname'].valid
+            "
+              >
+                Please Enter First Name</span
+              >
+            </div>
+            <div class="col-xs-6 col-md-6">
+              <input
+                type="text"
+                class="form-control col-md-6"
+                placeholder="last Name"
+                formControlName="lastname"
+              />
+            </div>
+            <span
+              class="error"
+              *ngIf="
+            userForm.controls['lastname'].touched &&
+            !userForm.controls['lastname'].valid
+          "
+            >
+              Please Enter Last Name</span
+            >
+          </div>
+        </div>
+        <br />
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Email"
+            formControlName="email"
+          />
+        </div>
+        <span
+          class="error"
+          *ngIf="
+        userForm.controls['email'].touched &&
+        !userForm.controls['email'].valid
+      "
+        >
+          Please Enter Valid Email</span
+        >
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Mobile"
+            formControlName="mobile"
+          />
+        </div>
+        <span
+          class="error"
+          *ngIf="
+        userForm.controls['mobile'].touched &&
+        !userForm.controls['mobile'].valid
+      "
+        >
+          Please Enter Valid Phone Number</span
+        >
+        <div class="row">
+          <div class="col-xs-1 col-md-1">
+            <label for="formControlRange">Age</label>
+          </div>
+          <div class="col-xs-9 col-md-9">
+            <input
+              type="range"
+              class="form-control-range"
+              [min]="18"
+              [max]="100"
+              [value]="age"
+              name="range"
+              (input)="age = $event.target.value"
+              formControlName="age"
+            />
+          </div>
+          {{ age }}
+        </div>
+
+        <div class="row">
+          <div class="col-xs-1 col-md-1">
+            <label for="formControlRange"></label>
+          </div>
+          100
+          <div class="col-xs-9 col-md-9">18</div>
+        </div>
+
+        <div style="margin-top: 1%">
+          <select class="hideLabel form-control" formControlName="country">
+            <option *ngFor="let cl of countryList">{{ cl.label }}</option>
+          </select>
+        </div>
+        <span
+          class="error"
+          *ngIf="
+       ( userForm.controls['country'].touched &&
+        !userForm.controls['country'].valid)
+      "
+        >
+          Please Enter Country</span
+        >
+        <div style="margin-top: 3%; margin-bottom: 2%">
+          <select class="hideLabel form-control" formControlName="state">
+            <option *ngFor="let cl of stateList">{{ cl.label }}</option>
+          </select>
+        </div>
+        <span
+          class="error"
+          *ngIf="
+        userForm.controls['state'].touched &&
+        !userForm.controls['state'].valid
+      "
+        >
+          Please Enter state</span
+        >
+        <mat-accordion style="margin-top: 2%">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="mat-row">
+              <span class="mat-cell">Address</span>
+            </mat-expansion-panel-header>
+            <mat-accordion lass="mat-table">
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <div>Home</div>
+                </mat-expansion-panel-header>
+                <div>
+                  <input
+                    matInput
+                    formControlName="homeAddress1"
+                    class="form-control"
+                    placeholder=" Home Address1"
+                  />
+                </div>
+                <span
+                  class="error"
+                  *ngIf="
+                userForm.controls['homeAddress1'].touched &&
+                !userForm.controls['homeAddress1'].valid
+              "
+                >
+                  Please Enter homeAddress1</span
+                >
+                <div style="margin-top: 2%">
+                  <input
+                    matInput
+                    formControlName="homeAddress2"
+                    class="form-control"
+                    placeholder=" Home Address2"
+                  />
+                </div>
+              </mat-expansion-panel>
+
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <div>Company</div>
+                </mat-expansion-panel-header>
+                <div>
+                  <div>
+                    <input
+                      matInput
+                      formControlName="companyAddress1"
+                      class="form-control"
+                      placeholder="company Address1"
+                    />
+                  </div>
+                  <span
+                    class="error"
+                    *ngIf="
+                  userForm.controls['companyAddress1'].touched &&
+                  !userForm.controls['companyAddress1'].valid
+                "
+                  >
+                    Please Enter companyAddress1</span
+                  >
+                  <div style="margin-top: 2%">
+                    <input
+                      matInput
+                      formControlName="companyAddress2"
+                      class="form-control"
+                      placeholder="company Address2"
+                    />
+                  </div>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <mat-form-field class="example-chip-list" style="margin-top: 2%">
+          <mat-chip-list
+            #chipList
+            aria-label="tags selection"
+            formControlName="hobbies"
+          >
+            <mat-chip
+              *ngFor="let tags of hobbies.value"
+              [selectable]="selectable"
+              [removable]="removable"
+              (removed)="remove(tags)"
+            >
+              {{ tags }}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input
+              placeholder="Tags"
+              [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="addOnBlur"
+              (matChipInputTokenEnd)="add($event)"
+            />
+          </mat-chip-list>
+        </mat-form-field>
+        <span
+          class="error"
+          *ngIf="
+        userForm.controls['hobbies'].touched &&
+        !userForm.controls['hobbies'].valid
+      "
+        >
+          Please Enter hobbies</span
+        >
+        <div>
+          <label class="checkbox-inline">
+            <input
+              type="checkbox"
+              value="true"
+              formControlName="box"
+            />subscribe Our News Letter
+          </label>
+        </div>
+      </div>
+
+    </div>
+
+    <div></div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    type="Submit"
+    class="btn btn-primary"
+    [disabled]="!userForm.valid"
+    (click)="onAddUser(userForm.value)"
+  >
+    Submit
+  </button>
+</mat-dialog-actions>

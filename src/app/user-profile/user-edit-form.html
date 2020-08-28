@@ -1,0 +1,153 @@
+<h2 mat-dialog-title>Update Profile</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="userForm" >
+    <div class="modal-body">
+      <div class="col-sm-3 col-md-3">
+        <br />
+        <img [src]="transform()" style="margin-bottom: 10%; width: 100px; height: 100px">
+        <div >
+          <button
+            mat-storked-button
+            type="button"
+            (click)="filePicker.click()"
+          >
+            Upload Photo
+          </button>
+          <input
+            type="file"
+            #filePicker
+            (change)="onImagePicked($event)"
+            accept="image/*"
+            value="{{ this.imagePreview }}"
+
+          />
+        </div>
+      </div>
+      <div class="col-md-9" *ngFor="let data of dataModule">
+        <br />
+        <div>
+          <div class="row">
+            <div class="col-xs-6 col-md-6">
+              <input type="text" class="form-control col-xl-3" placeholder="First Name"
+                formControlName="firstname"/>
+            </div>
+            <div class="col-xs-6 col-md-6">
+              <input type="text" class="form-control col-md-6" placeholder="last Name" formControlName="lastname" />
+            </div>
+          </div>
+        </div><br>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Email" formControlName="email"/>
+        </div>
+
+        <div class="form-group">
+          <input type="number" class="form-control" placeholder="Mobile" formControlName="mobile"/>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-1 col-md-1">
+            <label for="formControlRange">Age</label>
+          </div>
+          <div class="col-xs-9 col-md-9">
+            <input type="range" class="form-control-range" [min]="18" [max]="100" [value]="age" name="range"
+              (input)="age = $event.target.value" formControlName="age"/>
+          </div>
+          {{ age }}
+        </div>
+
+        <div class="row">
+          <div class="col-xs-1 col-md-1">
+            <label for="formControlRange"></label>
+          </div>
+          100
+          <div class="col-xs-9 col-md-9">18</div>
+        </div>
+
+        <div style="margin-top: 1%;">
+          <select class="hideLabel form-control" formControlName="country" value={{data.country}}>
+            <option *ngFor="let k of countryList">
+              {{ k.label }}
+            </option>
+          </select>
+        </div>
+        <div style="margin-top: 3%; margin-bottom: 2%;">
+          <select class="hideLabel form-control" formControlName="state" value={{data.state}}>
+            <option *ngFor="let cl of stateList">
+              {{ cl.label }}
+            </option>
+          </select>
+        </div>
+
+        <mat-accordion style="margin-top: 2%;">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="mat-row">
+              <span class="mat-cell">Address</span>
+            </mat-expansion-panel-header>
+            <mat-accordion lass="mat-table">
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <div>Home</div>
+                </mat-expansion-panel-header>
+                <div>
+                  <input matInput formControlName="homeAddress1" class="form-control"
+                    placeholder=" Home Address1" />
+                </div>
+                <div style="margin-top: 2%;">
+                  <input matInput formControlName="homeAddress2" class="form-control"
+                    placeholder=" Home Address2" />
+                </div>
+              </mat-expansion-panel>
+
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <div>Company</div>
+                </mat-expansion-panel-header>
+                <div>
+                  <div>
+                    <input matInput formControlName="companyAddress1" class="form-control"
+                      placeholder="company Address1"/></div>
+                      <div style="margin-top: 2%;">
+                    <input matInput formControlName="companyAddress2" class="form-control"
+                      placeholder="company Address2"/>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+
+        <mat-form-field class="example-chip-list" style="margin-top: 2%;">
+          <mat-chip-list #chipList aria-label="tags selection" formControlName="hobbies" >
+            <mat-chip *ngFor="let tags of hobbies.value" [selectable]="selectable"
+                     [removable]="removable" (removed)="remove(tags)">
+              {{tags}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Tags"
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="addOnBlur"
+                   (matChipInputTokenEnd)="add($event)" >
+          </mat-chip-list>
+        </mat-form-field>
+
+        <div>
+          <label class="checkbox-inline">
+            <input type="checkbox" value="true" formControlName="box" />subscribe Our News Letter
+          </label>
+        </div>
+      </div>
+
+    </div>
+
+    <div></div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end" *ngFor="let data of dataModule">
+  <button type="Submit" class="btn btn-primary" [disabled]="!userForm.valid"
+          (click)="onUpdateUser(userForm.value,data.id)">
+          Submit
+        </button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

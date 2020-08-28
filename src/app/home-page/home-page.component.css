@@ -1,0 +1,245 @@
+.error
+{
+  color: red;
+}
+
+.navStyle{
+  margin-top: 5%;
+   margin-left: 500px;
+}
+
+.formcss{
+  margin-top: 15%; margin-left: 5%; margin-right: 5%
+}
+
+.registerButton
+{
+  text-align: center; margin-top: 10%; margin-bottom: 2%
+}
+
+.topblock {
+  height: 400px;
+}
+.middleBlock {
+  background-color: #d3d3d3;
+  padding: 75px;
+  /* text-align: center; */
+  color: black;
+}
+
+.thirdBlock {
+  background-color: #000;
+  padding: 120px;
+  /* text-align: center; */
+  color: white;
+}
+
+footer {
+  background-color: #d3d3d3;
+  padding: 50px;
+  /* text-align: center; */
+  color: white;
+}
+.input-field:focus {
+  border: 2px solid dodgerblue;
+}
+
+a {
+  text-decoration: none;
+}
+
+div#top_nav {
+  text-align: center;
+}
+
+div#top_nav li {
+  display: inline;
+  padding: 15px;
+}
+
+div#top_nav a {
+  display: inline-block;
+  position: relative;
+}
+
+div#top_nav a:hover {
+  color: orange;
+  text-decoration: none;
+}
+
+div#top_nav a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 19px;
+  left: 0;
+  background-color: orange;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.15s ease-in-out 0s;
+  transition: all 0.15s ease-in-out 0s;
+}
+
+div#top_nav a:hover:before,
+div#top_nav a.active:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.active {
+  color: orange;
+}
+
+.slidecontainer {
+  width: 50%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 70%;
+  height: 9px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #007bff;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4caf50;
+  cursor: pointer;
+}
+
+.example-chip-list {
+  width: 100%;
+}
+
+:host {
+  display: block;
+}
+
+section {
+  margin-top: 200px;
+}
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+}
+ .div1 {
+  background-image: url("https://www.gstatic.com/webp/gallery/1.jpg");
+}
+.div2 {
+  background-image: url("https://www.gstatic.com/webp/gallery/4.jpg");
+}
+.div3 {
+  background-image: url("https://homepages.cae.wisc.edu/~ece533/images/goldhill.png");
+}
+.div0 {
+  background-image: url("https://homepages.cae.wisc.edu/~ece533/images/arctichare.png");
+}
+
+.button2 {
+  background-color: white;
+  color: black;
+  border: 2px solid #008cba;
+}
+
+.button {
+  background-color: #d3d3d3;
+  color: #008cba;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+}
+
+hr {
+  border-top: 4px solid #008cba;
+}
+
+.form-control1 {
+  display: inline !important;
+  width: 20%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #000;
+  background-image: none;
+  border: 1px solid #008cba;
+  border-radius: 4px;
+  color: #fff;
+  margin-right: -2%;
+}
+
+.form-control2 {
+  display: inline !important;
+  width: 20%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #008cba;
+  border-radius: 4px;
+  color: #000;
+  margin-right: -2%;
+}
+
+.modal-body {
+  padding: 0px !important;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
+
+.image-preview {
+  height: 5rem;
+  margin: 1rem 0;
+}
+
+.image-preview img {
+  height: 100%;
+}
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
